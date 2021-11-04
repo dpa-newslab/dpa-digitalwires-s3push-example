@@ -1,0 +1,35 @@
+{
+  "name": "dpa-nitf-transform",
+  "version": "1.0.0",
+  "description": "An example to integrate s3push via serverless into the customers AWS account via a lambda function for transformation.",
+  "author": "dpa-IT Services GmbH",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "engines": {
+    "node": ">=12.22"
+  },
+  "scripts": {
+    "transform-deploy": "serverless deploy; serverless info -v",
+    "transform-remove": "serverless remove",
+    "test": "ava *.test.js",
+    "test:watch": "ava --watch"
+  },
+  "dependencies": {
+    "lodash.escape": "^4.0.1",
+    "lodash.sortby": "^4.7.0",
+    "lodash.template": "^4.4.0",
+    "moment": "^2.22.2",
+    "striptags": "^3.1.1",
+    "xmldom": "^0.1.27",
+    "xpath": "^0.0.27"
+  },
+  "devDependencies": {
+    "ava": "^0.25.0",
+    "serverless": "^2.64.0"
+  }
+}

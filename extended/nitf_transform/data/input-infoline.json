@@ -1,0 +1,212 @@
+{
+  "format": "digitalwires@0.5.3",
+  "entry_id": "2V0ucCxQquiwfjWze85LNgvrwXcMLamKPJSqQhJg",
+  "updated": "2019-07-10T12:00:12Z",
+  "urn": "urn:newsml:dpa.com:20090101:190710-99-999121",
+  "version_created": "2019-07-10T12:12:03+02:00",
+  "version": 4,
+  "pubstatus": "usable",
+  "embargoed": null,
+  "language": "de",
+  "urgency": 4,
+  "kicker": "In Real Life",
+  "headline": "Licht und Kaleidoskope: Ólafur Eliasson in der Tate Modern",
+  "subhead": null,
+  "teaser": "Licht und Schatten, Spiegeldecken, Mooswände und Kaleidoskope: Eine neue Ausstellung über den Lichtkünstler Ólafur Eliasson bringt Leben in die Tate Modern.",
+  "byline": "Von Anna Tomforde, dpa",
+  "dateline": "London (dpa) - ",
+  "article_html": "<section class=\"main\"><p>Der dänisch-isländische Lichtkünstler Ólafur Eliasson und die Tate Modern in London haben ein ganz besonderes Verhältnis zueinander.</p><p>Mit seinem «Weather Project», einer glühenden illusionären Sonne unter der Spiegeldecke der gigantischen Turbinenhalle des ehemaligen Kraftwerks, setzte Eliasson 2003 neue Maßstäbe der Gegenwartskunst. Das von mehr als zwei Millionen Menschen besuchte Installationsprojekt markierte einen Wendepunkt in seiner Karriere - und für das Erfolgskonzept der Tate Modern.</p><p>In einer Art gegenseitigem Dankeschön haben sich beide nun zu einem ersten umfassenden Überblick über drei Jahrzehnte des Schaffens des in Berlin arbeitenden Künstlers zusammengetan. Die Schau «Ólafur Eliasson: In Real Life» läuft vom 11. Juli bis zum 5. Januar 2020.</p><p>Schon auf der Terasse draußen werden Besucher von einer elf Meter hohen Installation - «Wasserfall 2019» - begrüßt, die Eliasson speziell für London schuf. Das Thema von Schönheit und Zerbrechlichkeit der Natur setzt sich drinnen mit einer 20 Meter langen Wand aus skandinavischem Rentiermoos fort, die man «riechen und anfühlen» soll. Spiele mit Licht und Schatten, Dunst, Wasser, Farben und Spiegelreflexionen laden in Werken wie «Beauty» ( 1993) und «Your uncertain shadow» ( 2010) zum Nachdenken und zur «Wahrnehmung von Umgebung und Miteinander» ein.</p><p>Kaleidoskope aus Spiegelglas und Aluminium eröffnen neue Perspektiven nach innen und nach außen. Die Installation «Dein blinder Passagier» (2010) lädt zu einem Gang durch einen 39 Meter langen «Nebelkorridor» ein, in dem der Besucher sich an den Wänden entlang tastet und nur seine Füße sieht. Die Erfahrung ruft ganz unterschiedliche Reaktionen hervor, wie Eliasson betonte. «Entweder man hasst es oder man liebt es.» Wichtig aber sei bei all seinen Werken der «Moment der individuellen Wahrnehmung» des Betrachters.</p><p>Seine Werke, sagte Eliasson, seien noch genauso relevant wie vor 30 Jahren. Die Besucher von heute würden sie «mit neuen Augen sehen». Die Schau sei aber keineswegs eine Retrospektive. «Ich hoffe noch weitere 30 Jahre zu arbeiten», sagte der 52-jährige vor der Eröffnung in London.</p><p>Mit den rund 40 ausgestellten Werken bringt der Künstler erneut Spaß in die Tate. In einer Mischung aus Erlebnis, Interaktion und umweltpolitischem Gewissensappell wechseln sich sensibel-ästhetische Kunstwerke ab mit immersiven Erfahrungen und ernsten Warnungen vor den Auswirkungen des menschlichen Handels auf die Zerstörung der Umwelt. Die Schau gibt einen Einblick in die Arbeit des Berliner Studios von Eliasson, im Besucher-Café werden vegetarische Gerichte aus der Studio-Küche angeboten.</p></section>",
+  "infobox_html": null,
+  "linkbox_html": null,
+  "creditline": "dpa",
+  "copyrightnotice": "Copyright 2019, dpa (www.dpa.de). Alle Rechte vorbehalten",
+  "associations": [
+    {
+      "type": "image",
+      "urn": "urn:newsml:dpa.com:20090101:190710-99-998428",
+      "version": 3,
+      "is_featureimage": true,
+      "rank": 1,
+      "headline": "Ólafur Eliasson",
+      "caption": "Ólafur Eliasson in seiner Installation «Your spiral view» (2002).",
+      "creditline": "Aaron Chown/PA Wire/dpa",
+      "renditions": [
+        {
+          "size": 2048,
+          "width": 2048,
+          "height": 1365,
+          "mimetype": "image/jpeg",
+          "url": "https://d3hzhyitlnc455.cloudfront.net/v3/image/resize/urn:newsml:dpa.com:20090101:190710-99-998428-v3-s2048.jpeg?expires=1562976000&signature=MxItAaIajMGpGkbeHoG0aoj2W0Q"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "urn": "urn:newsml:dpa.com:20090101:190710-99-999220",
+      "version": 3,
+      "is_featureimage": false,
+      "rank": 2,
+      "headline": "Ólafur Eliasson",
+      "caption": "Veränderte Wahrnehmung - Blick in einen konvexen Glasspiegel.",
+      "creditline": "Aaron Chown/PA Wire/dpa",
+      "renditions": [
+        {
+          "size": 2048,
+          "width": 2048,
+          "height": 1365,
+          "mimetype": "image/jpeg",
+          "url": "https://d3hzhyitlnc455.cloudfront.net/v3/image/resize/urn:newsml:dpa.com:20090101:190710-99-999220-v3-s2048.jpeg?expires=1562976000&signature=BiPgsnspzgsAEaVbl-28l8rVc5U"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "urn": "urn:newsml:dpa.com:20090101:190710-99-998435",
+      "version": 3,
+      "is_featureimage": false,
+      "rank": 3,
+      "headline": "Ólafur Eliasson",
+      "caption": "Die Installation «Your uncertain shadow» (2010) lädt zur Interaktion ein.",
+      "creditline": "Frank Augstein/AP/dpa",
+      "renditions": [
+        {
+          "size": 2048,
+          "width": 2048,
+          "height": 1342,
+          "mimetype": "image/jpeg",
+          "url": "https://d3hzhyitlnc455.cloudfront.net/v3/image/resize/urn:newsml:dpa.com:20090101:190710-99-998435-v3-s2048.jpeg?expires=1562976000&signature=E7tIoXKGaaAZ2q-kW9C2Wt95zRc"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "type": "dnltype:rubric",
+      "name": "weblines.infoline_rs.boulevard.kultur",
+      "qcode": "dnlpath:weblines.infoline_rs.boulevard.kultur",
+      "is_current": true
+    },
+    {
+      "type": "dnltype:rubric",
+      "name": "weblines.starline.kunst",
+      "qcode": "dnlpath:weblines.starline.kunst",
+      "is_current": true
+    },
+    {
+      "type": "dnltype:rubric",
+      "name": "weblines.starline.topnews",
+      "qcode": "dnlpath:weblines.starline.topnews",
+      "is_current": true
+    },
+    {
+      "type": "dnltype:dpasubject",
+      "name": "Ausstellungen",
+      "qcode": "dpasubject:185",
+      "rank": 1
+    },
+    {
+      "type": "dnltype:dpasubject",
+      "name": "Kunst",
+      "qcode": "dpasubject:118",
+      "rank": 2
+    },
+    {
+      "type": "dnltype:keyword",
+      "name": "Ólafur Eliasson",
+      "qcode": null,
+      "rank": 1
+    },
+    {
+      "type": "dnltype:keyword",
+      "name": "Tate Modern",
+      "qcode": null,
+      "rank": 2
+    },
+    {
+      "type": "dnltype:geosubject",
+      "name": "Großbritannien",
+      "qcode": "dpacountry:54",
+      "rank": 1
+    },
+    {
+      "type": "dnltype:geosubject",
+      "name": "Berlin",
+      "qcode": "dpaarea:3",
+      "rank": 2
+    },
+    {
+      "type": "dnltype:geosubject",
+      "name": "Deutschland",
+      "qcode": "dpacountry:1",
+      "rank": 3
+    },
+    {
+      "type": "dnltype:desk",
+      "name": "ku",
+      "qcode": "dpacat:ku"
+    },
+    {
+      "type": "dnltype:genre",
+      "name": "KORR-Bericht",
+      "qcode": "dpatextgenre:14"
+    },
+    {
+      "type": "dnltype:poi",
+      "name": "Tate, Bankside, London SE1 9TG, Vereinigtes Königreich",
+      "qcode": null,
+      "geojson": {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -0.0993564,
+            51.5075953
+          ]
+        },
+        "type": "Feature",
+        "properties": {
+          "country": "Großbritannien",
+          "formatted_address": "Bankside, London SE1 9TG, Vereinigtes Königreich",
+          "name": "Tate"
+        }
+      }
+    },
+    {
+      "type": "dnltype:urgency",
+      "name": "4",
+      "qcode": "urgency:4"
+    }
+  ],
+  "current_rubric_names": [
+    "weblines.infoline_rs.boulevard.kultur",
+    "weblines.starline.kunst",
+    "weblines.starline.topnews"
+  ],
+  "rubric_names": [
+    "weblines.infoline_rs.boulevard.kultur",
+    "weblines.starline.kunst",
+    "weblines.starline.topnews"
+  ],
+  "dpasubject_names": [
+    "Ausstellungen",
+    "Kunst"
+  ],
+  "geosubject_names": [
+    "Großbritannien",
+    "Berlin",
+    "Deutschland"
+  ],
+  "keyword_names": [
+    "Ólafur Eliasson",
+    "Tate Modern"
+  ],
+  "desk_names": [
+    "ku"
+  ],
+  "genre_names": [
+    "KORR-Bericht"
+  ],
+  "poi_names": [
+    "Tate, Bankside, London SE1 9TG, Vereinigtes Königreich"
+  ],
+  "scope_names": []
+}

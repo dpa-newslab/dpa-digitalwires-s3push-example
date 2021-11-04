@@ -1,0 +1,147 @@
+{
+  "format": "digitalwires@0.5.3",
+  "entry_id": "pEWDVdHfJ9DdU4I166hVjZsTmE7Q3MExOHJUxRn57A",
+  "updated": "2019-06-17T07:20:04Z",
+  "urn": "urn:newsml:dpa.com:20090101:190617-99-676016",
+  "version_created": "2019-06-17T09:17:59+02:00",
+  "version": 2,
+  "pubstatus": "usable",
+  "embargoed": null,
+  "language": "de",
+  "urgency": 4,
+  "kicker": "Ausgezeichnet",
+  "headline": "Zwei Filme gewinnen Hauptpreis bei Emder Filmfest",
+  "subhead": null,
+  "teaser": "Es gibt in diesem Jahr keinen zweiten Gewinner, dafür zwei erste Plätze. Jürgen Vogel wurde mit dem Schauspielpreis geehrt.",
+  "byline": null,
+  "dateline": "Emden (dpa) - ",
+  "article_html": "<section class=\"main\"><p>Die Produktionen «Don't Shoot» (Belgien/Niederlande 2018) und «Zoros Solo» (Deutschland 2019) sind die großen Gewinner des 30. Internationalen Filmfestes Emden-Norderney. </p><p>Beide Filme wurden am Sonntagabend mit dem Score Bernhard Wicki Preis in Gold ausgezeichnet, wie die Festival-Organisatoren in Emden mitteilten. Den beiden Siegern wurden jeweils 6500 Euro zugesprochen.</p><p>Weil es zwei Hauptgewinner gab, wurde die silberne Auszeichnung diesmal nicht vergeben. Den in diesem Jahr mit 2000 Euro dotierten Wicki-Preis in Bronze erhielt der Film «Und der Zukunft zugewandt» von Bernd Böhlich. Der nach einem Publikumsvotum vergebene Wicki-Preis ist mit insgesamt 15.000 Euro dotiert.</p><p>Der Schauspielpreis des Emder Filmfestes wurde Jürgen Vogel zugesprochen. Der 51 Jahre alte Schauspieler erhielt die mit 5000 Euro dotierte Auszeichnung für sein Gesamtwerk. Vogel habe sich einen beinahe legendären Ruf erarbeitet, sagte der Filmfest-Leiter Rolf Eckard. Der Mann mit den markanten Zahnlücken und der Glatze hat inzwischen in mehr als 100 Produktionen gespielt. Er mimte etwa Vergewaltiger, Mörder und Kriminelle.</p><p>Den DGB-Filmpreis erhielt Nora Fingscheidt für den Film «Systemsprenger». Mit der Auszeichnung werden Spiel- oder Dokumentarfilme ausgezeichnet, die sich mit gesellschaftlichen Themen wie Gleichberechtigung, Migration oder Umweltschutz beschäftigen. Der Preis ist mit 7000 Euro dotiert.</p><p>Insgesamt waren 65.500 Euro Preisgeld ausgelobt. Das Internationale Filmfest Emden-Norderney wurde 1990 gegründet und zieht nach Angaben der Veranstalter jährlich bis zu 25.000 Besucher an. Schwerpunkte sind nordwesteuropäische und deutschsprachige Produktionen mit Spiel-, Dokumentar- und Kurzfilmen.</p></section>",
+  "infobox_html": null,
+  "linkbox_html": "<section class=\"linkbox\"><ul><li><a href=\"http://dpaq.de/4BFzl\">Filmfest Emden</a></li></ul></section>",
+  "creditline": "dpa",
+  "copyrightnotice": "Copyright 2019, dpa (www.dpa.de). Alle Rechte vorbehalten",
+  "associations": [
+    {
+      "type": "image",
+      "urn": "urn:newsml:dpa.com:20090101:190617-99-676092",
+      "version": 2,
+      "is_featureimage": true,
+      "rank": 1,
+      "headline": "Emder Schauspielpreis 2019",
+      "caption": "Jürgen Vogel gewinnt den Schauspielpreis des Internationalen Filmfests Emden-Norderney.",
+      "creditline": "Mohssen Assanimoghaddam/dpa",
+      "renditions": [
+        {
+          "size": 2048,
+          "width": 2048,
+          "height": 1322,
+          "mimetype": "image/jpeg",
+          "url": "https://d3hzhyitlnc455.cloudfront.net/v3/image/resize/urn:newsml:dpa.com:20090101:190617-99-676092-v2-s2048.jpeg?expires=1560902400&signature=YlMWrToNQBp75s05OBKpHB99L-E"
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "type": "dnltype:rubric",
+      "name": "weblines.infoline_rs.boulevard.kultur",
+      "qcode": "dnlpath:weblines.infoline_rs.boulevard.kultur",
+      "is_current": true
+    },
+    {
+      "type": "dnltype:rubric",
+      "name": "weblines.starline.kino",
+      "qcode": "dnlpath:weblines.starline.kino",
+      "is_current": true
+    },
+    {
+      "type": "dnltype:rubric",
+      "name": "weblines.starline.topnews",
+      "qcode": "dnlpath:weblines.starline.topnews",
+      "is_current": true
+    },
+    {
+      "type": "dnltype:dpasubject",
+      "name": "Auszeichnungen",
+      "qcode": "dpasubject:516",
+      "rank": 1
+    },
+    {
+      "type": "dnltype:dpasubject",
+      "name": "Film",
+      "qcode": "dpasubject:119",
+      "rank": 2
+    },
+    {
+      "type": "dnltype:geosubject",
+      "name": "Niedersachsen",
+      "qcode": "dpaarea:9",
+      "rank": 1
+    },
+    {
+      "type": "dnltype:desk",
+      "name": "ku",
+      "qcode": "dpacat:ku"
+    },
+    {
+      "type": "dnltype:genre",
+      "name": "Meldung",
+      "qcode": "dpatextgenre:1"
+    },
+    {
+      "type": "dnltype:poi",
+      "name": "Ort der Preisverleihung (Neues Theater Emden), Theaterstraße 5, 26721 Emden, Deutschland",
+      "qcode": null,
+      "geojson": {
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            7.20331,
+            53.37461
+          ]
+        },
+        "type": "Feature",
+        "properties": {
+          "country": "Deutschland",
+          "formatted_address": "Theaterstraße 5, 26721 Emden, Deutschland",
+          "name": "Ort der Preisverleihung (Neues Theater Emden)",
+          "administrative_area_level_1": "Niedersachsen",
+          "locality": "Emden"
+        }
+      }
+    },
+    {
+      "type": "dnltype:urgency",
+      "name": "4",
+      "qcode": "urgency:4"
+    }
+  ],
+  "current_rubric_names": [
+    "weblines.infoline_rs.boulevard.kultur",
+    "weblines.starline.kino",
+    "weblines.starline.topnews"
+  ],
+  "rubric_names": [
+    "weblines.infoline_rs.boulevard.kultur",
+    "weblines.starline.kino",
+    "weblines.starline.topnews"
+  ],
+  "dpasubject_names": [
+    "Auszeichnungen",
+    "Film"
+  ],
+  "geosubject_names": [
+    "Niedersachsen"
+  ],
+  "keyword_names": [],
+  "desk_names": [
+    "ku"
+  ],
+  "genre_names": [
+    "Meldung"
+  ],
+  "poi_names": [
+    "Ort der Preisverleihung (Neues Theater Emden), Theaterstraße 5, 26721 Emden, Deutschland"
+  ],
+  "scope_names": []
+}

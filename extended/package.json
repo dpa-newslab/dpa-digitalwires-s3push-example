@@ -1,0 +1,23 @@
+{
+  "name": "dpa-s3push-transform",
+  "version": "1.0.0",
+  "description": "An example to integrate s3push via serverless into the customers AWS account via a lambda function for transformation.",
+  "author": "dpa-IT Services GmbH",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "scripts": {
+    "s3push-sqs:deploy": "cd sqs_receive; npm run s3push-sqs-deploy; cd ..",
+    "s3push-sqs:remove": "cd sqs_receive; npm run s3push-sqs-remove; cd ..",
+    "nitf-transform:deploy": "cd nitf_transform; npm run transform-deploy; cd ..",
+    "nitf-transform:test": "cd nitf_transform; npm run test; cd ..",
+    "nitf-transform:remove": "cd nitf_transform; npm run transform-remove; cd ..",
+    "s3push-deploy": "npm run s3push-sqs:deploy; npm run nitf-transform:deploy",
+    "s3push-remove": "npm run s3push-sqs:remove; npm run nitf-transform:remove;"
+  },
+  "dependencies": {}
+}

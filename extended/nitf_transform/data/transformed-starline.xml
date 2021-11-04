@@ -1,0 +1,55 @@
+<nitf> 
+  <head> 
+    <title>Zwei Filme gewinnen Hauptpreis bei Emder Filmfest</title>  
+    <meta content="dpa - Deutsche Presse-Agentur GmbH" name="origin"/>  
+    <meta content="dpa-infocom GmbH" name="copyright"/>  
+    <meta content="service-wds" name="generator"/>  
+    <docdata> 
+      <doc-id id-string="urn-newsml-dpa-com-20090101-190617-99-676016" regsrc="dpa-infocom"/>  
+      <urgency ed-urg="4"/>
+      <fixture fix-id="/infoline_rs/boulevard/kultur/"/>
+      <fixture fix-id="/starline/kino/"/>
+      <fixture fix-id="/starline/topnews/"/>
+      <date.issue norm="20190617T091759+0200"/>  
+      <doc-scope scope="ku"/>  
+      <key-list> 
+        <keyword key="Auszeichnungen/Film/Niedersachsen/"/> 
+      </key-list> 
+    </docdata> 
+  </head>  
+  <body> 
+    <body.head> 
+      <hedline> 
+        <hl1>Zwei Filme gewinnen Hauptpreis bei Emder Filmfest</hl1>  
+        <hl2 class="ShortHeadLine">Ausgezeichnet</hl2> 
+      </hedline> 
+      <abstract> 
+        <p>Es gibt in diesem Jahr keinen zweiten Gewinner, dafür zwei erste Plätze. Jürgen Vogel wurde mit dem Schauspielpreis geehrt.</p> 
+      </abstract>
+    </body.head>  
+    <body.content>
+      <p>Die Produktionen «Don't Shoot» (Belgien/Niederlande 2018) und «Zoros Solo» (Deutschland 2019) sind die großen Gewinner des 30. Internationalen Filmfestes Emden-Norderney. </p>
+               <p>Beide Filme wurden am Sonntagabend mit dem Score Bernhard Wicki Preis in Gold ausgezeichnet, wie die Festival-Organisatoren in Emden mitteilten. Den beiden Siegern wurden jeweils 6500 Euro zugesprochen.</p>
+               <p>Weil es zwei Hauptgewinner gab, wurde die silberne Auszeichnung diesmal nicht vergeben. Den in diesem Jahr mit 2000 Euro dotierten Wicki-Preis in Bronze erhielt der Film «Und der Zukunft zugewandt» von Bernd Böhlich. Der nach einem Publikumsvotum vergebene Wicki-Preis ist mit insgesamt 15.000 Euro dotiert.</p>
+               <p>Der Schauspielpreis des Emder Filmfestes wurde Jürgen Vogel zugesprochen. Der 51 Jahre alte Schauspieler erhielt die mit 5000 Euro dotierte Auszeichnung für sein Gesamtwerk. Vogel habe sich einen beinahe legendären Ruf erarbeitet, sagte der Filmfest-Leiter Rolf Eckard. Der Mann mit den markanten Zahnlücken und der Glatze hat inzwischen in mehr als 100 Produktionen gespielt. Er mimte etwa Vergewaltiger, Mörder und Kriminelle.</p>
+               <p>Den DGB-Filmpreis erhielt Nora Fingscheidt für den Film «Systemsprenger». Mit der Auszeichnung werden Spiel- oder Dokumentarfilme ausgezeichnet, die sich mit gesellschaftlichen Themen wie Gleichberechtigung, Migration oder Umweltschutz beschäftigen. Der Preis ist mit 7000 Euro dotiert.</p>
+               <p>Insgesamt waren 65.500 Euro Preisgeld ausgelobt. Das Internationale Filmfest Emden-Norderney wurde 1990 gegründet und zieht nach Angaben der Veranstalter jährlich bis zu 25.000 Besucher an. Schwerpunkte sind nordwesteuropäische und deutschsprachige Produktionen mit Spiel-, Dokumentar- und Kurzfilmen.</p>
+      <block style="EXTERNAL-LINKS"> 
+        <p> 
+          <a href="http://dpaq.de/4BFzl">Filmfest Emden</a>
+        </p> 
+      </block>  
+      <media media-type="image"> 
+       <media-metadata name="media-id" value="urn-newsml-dpa-com-20090101-190617-99-676092"/>
+       <media-reference alternate-text="Emder Schauspielpreis 2019" height="1322" mime-type="image/jpeg" source="https://d3hzhyitlnc455.cloudfront.net/v3/image/resize/urn:newsml:dpa.com:20090101:190617-99-676092-v2-s2048.jpeg?expires=1560902400&amp;signature=YlMWrToNQBp75s05OBKpHB99L-E" width="2048"/>  
+       <media-caption> 
+         <p>Jürgen Vogel gewinnt den Schauspielpreis des Internationalen Filmfests Emden-Norderney. Foto: Mohssen Assanimoghaddam/dpa</p> 
+       </media-caption>  
+       <media-producer> 
+         <person>Mohssen Assanimoghaddam/dpa</person> 
+       </media-producer> 
+     </media> 
+    </body.content>  
+    <body.end/> 
+  </body> 
+</nitf>

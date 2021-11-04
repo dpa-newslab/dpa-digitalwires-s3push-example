@@ -1,0 +1,80 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright 2021, 2021 dpa-IT Services GmbH
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+service: ${self:custom.global_resource_prefix}-dpa-s3push-nitf-transform
+projectDir: ../
+
+custom:
+  global_resource_prefix: ${file(../sqs_receive/serverless.yml):custom.global_resource_prefix}
+
+  description: "Read incoming JSON articles and transform them into NITF XML format"
+
+  s3_bucket_name: ${file(../sqs_receive/serverless.yml):custom.s3_bucket_name}
+  s3_prefix_in: ${file(../sqs_receive/serverless.yml):custom.s3_prefix_in}
+  s3_prefix_out: ${file(../sqs_receive/serverless.yml):custom.s3_prefix_out}
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: eu-central-1
+  # TODO: create deployment bucket or comment the deploymentBucket with results in a default deployment bucket
+  # aws s3api create-bucket --bucket <deploymentBucketName> --region eu-central-1 --create-bucket-configuration LocationConstraint=eu-central-1
+  deploymentBucket: serverless-deployments-${self:provider.region}-${env:USER,"someUser"}
+  logRetentionInDays: 14
+
+  iamRoleStatements:
+
+    # attach function to bucket
+    -  Effect: "Allow"
+       Action: "s3:PutBucketNotification"
+       Resource: "arn:aws:s3:::${self:custom.s3_bucket_name}"
+
+    # read from bucket
+    - Effect: "Allow"
+      Action: "s3:GetObject*"
+      Resource: [ "arn:aws:s3:::${self:custom.s3_bucket_name}/${self:custom.s3_prefix_in}/*" ]
+
+    # write transformed to bucket
+    - Effect: "Allow"
+      Action: "s3:PutObject*"
+      Resource: [ "arn:aws:s3:::${self:custom.s3_bucket_name}/${self:custom.s3_prefix_out}/*" ]
+
+functions:
+  transform:
+    description: "${self:custom.description}"
+    handler: handler.handler
+    memorySize: 256
+    timeout: 30
+    reservedConcurrency: 5
+    events:
+      - s3:
+          bucket: ${self:custom.s3_bucket_name}
+          event: s3:ObjectCreated:*
+          rules:
+             - prefix: ${self:custom.s3_prefix_in}/
+             - suffix: .json
+          existing: true
+
+package:
+  exclude:
+    - "*"
+    - "**/*"
+  include:
+    - "*.js"
+    - "node_modules/**"
+    - "!*.test.js"
+    - "!**/*~"
