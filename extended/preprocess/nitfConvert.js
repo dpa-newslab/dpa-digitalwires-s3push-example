@@ -1,6 +1,6 @@
 /* -*- coding: utf-8 -*-
 
- Copyright 2021, 2021 dpa-IT Services GmbH
+ Copyright 2022, 2022 dpa-IT Services GmbH
 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -40,12 +40,12 @@ const hasCurrentRubric = (article) => {
 function adaptArticle (article) {
   const adapted = {
     ...article,
-    guj_origin: 'dpa - Deutsche Presse-Agentur GmbH',
-    guj_copyright: 'dpa-infocom GmbH',
-    guj_id: article.urn.replace(/[:.]/g, '-'),
+    origin: 'dpa - Deutsche Presse-Agentur GmbH',
+    nitf_copyright: 'dpa-infocom GmbH',
+    nitf_id: article.urn.replace(/[:.]/g, '-'),
     date_issue: moment(article.version_created).format('YYYYMMDDTHHmmssZZ'),
     keywords: extractKeywords(article.categories),
-    guj_description: extractDescription(article.article_html),
+    nitf_description: extractDescription(article.article_html),
     teaser: article.teaser || '',
     kicker: article.kicker || '',
     article_body: extractSectionMain(article.article_html),
@@ -60,9 +60,9 @@ function adaptAssociation (article, assoc, i) {
   const image_id = assoc.urn.replace(/[:.]/g,'-')
   const adapted = {
     ...assoc,
-    guj_image_id: image_id,         // TODO ok?
-    guj_source: 'dpa-infocom',      // TODO
-    copyright: 'dpa-infocom GmbH',  // TODO
+    nitf_image_id: image_id,
+    nitf_source: 'dpa-infocom',
+    copyright: 'dpa-infocom GmbH',
     title: assoc.headline || '',
     description_full: assoc.caption + (assoc.creditline ? ' Foto: ' + assoc.creditline : '')
   }
@@ -148,16 +148,16 @@ function selectMediaObject (associations) {
   return selected.slice(0, 1)   // [first]
 }
 
+// approximation of the old nitf-format
 const xmlArticle = template(`<nitf> 
   <head> 
     <title><%= escape(article.headline) %></title>  
-    <meta content="<%= escape(article.guj_origin) %>" name="origin"/>  
-    <meta content="<%= escape(article.guj_copyright) %>" name="copyright"/>  
+    <meta content="<%= escape(article.nitf_origin) %>" name="origin"/>  
+    <meta content="<%= escape(article.nitf_copyright) %>" name="copyright"/>  
     <meta content="service-wds" name="generator"/>  
     <docdata> 
-      <doc-id id-string="<%= article.guj_id %>" regsrc="dpa-infocom"/>  
-      <urgency ed-urg="<%= article.urgency %>"/><% article.fixtures.forEach(fixture => { %>
-      <fixture fix-id="<%= escape(fixture) %>"/><% }) %>
+      <doc-id id-string="<%= article.nitf_id %>" regsrc="dpa-infocom"/>  
+      <urgency ed-urg="<%= article.urgency %>"/><% article.fixtures.forEach(fixture => { %><fixture fix-id="<%= escape(fixture) %>"/><% }) %>
       <date.issue norm="<%= article.date_issue %>"/>  
       <doc-scope scope="<%= article.desk_names %>"/>  
       <key-list> 
@@ -183,7 +183,7 @@ const xmlArticle = template(`<nitf>
         </p> <% }) %>
       </block>  <% article.media_objects.filter(m_obj => m_obj.type === 'image').forEach(m_obj => { %>
       <% filterForImagesize(m_obj.renditions).forEach(content => { %><media media-type="image"> 
-       <media-metadata name="media-id" value="<%= m_obj.guj_image_id %>"/>
+       <media-metadata name="media-id" value="<%= m_obj.nitf_image_id %>"/>
        <media-reference alternate-text="<%= escape(m_obj.headline) %>" height="<%= content.height %>" mime-type="image/jpeg" source="<%= escape(content.url) %>" width="<%= content.width %>"/>  
        <media-caption> 
          <p><%= escape(m_obj.caption) %> Foto: <%= escape(m_obj.creditline) %></p> 
@@ -197,4 +197,17 @@ const xmlArticle = template(`<nitf>
   </body> 
 </nitf>`)
 
-module.exports = { convert, hasCurrentRubric }
+const getFileEnding = () => {
+  return ".xml"
+}
+
+const processingAllowed = (article) => {
+  // Allow article processing only if article is in one or more rubrics - suppresses complete derubrications
+  return hasCurrentRubric(article)
+}
+
+module.exports = { 
+    convert,
+    getFileEnding,
+    processingAllowed
+}

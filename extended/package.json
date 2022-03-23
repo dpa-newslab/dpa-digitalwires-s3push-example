@@ -11,13 +11,21 @@
     }
   ],
   "scripts": {
+    "s3push-base-resources:install": "cd base_resources; npm install; cd ..",
+    "s3push-base-resources:deploy": "cd base_resources; npm run s3push-base-resources-deploy; cd ..",
+    "s3push-base-resources:remove": "cd base_resources; npm run s3push-base-resources-remove; cd ..",
+    "s3push-preprocess:install": "cd preprocess; npm install; cd ..",
+    "s3push-preprocess:deploy": "cd preprocess; npm run s3push-preprocess-deploy; cd ..",
+    "s3push-preprocess:test": "cd preprocess; npm run test; cd ..",
+    "s3push-preprocess:remove": "cd preprocess; npm run s3push-preprocess-remove; cd ..",
+    "s3push-sqs:install": "cd sqs_receive; npm install; cd ..",
     "s3push-sqs:deploy": "cd sqs_receive; npm run s3push-sqs-deploy; cd ..",
     "s3push-sqs:remove": "cd sqs_receive; npm run s3push-sqs-remove; cd ..",
-    "nitf-transform:deploy": "cd nitf_transform; npm run transform-deploy; cd ..",
-    "nitf-transform:test": "cd nitf_transform; npm run test; cd ..",
-    "nitf-transform:remove": "cd nitf_transform; npm run transform-remove; cd ..",
-    "s3push-deploy": "npm run s3push-sqs:deploy; npm run nitf-transform:deploy",
-    "s3push-remove": "npm run s3push-sqs:remove; npm run nitf-transform:remove;"
+    "s3push-install": "npm run s3push-base-resources:install; npm run s3push-preprocess:install; npm run s3push-sqs:install;",
+    "s3push-deploy": "npm run s3push-base-resources:deploy; npm run s3push-preprocess:deploy; npm run s3push-sqs:deploy",
+    "s3push-remove": "npm run s3push-base-resources:remove; npm run s3push-preprocess:remove; npm run s3push-sqs:remove"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "serverless": "^3.7.1"
+  }
 }

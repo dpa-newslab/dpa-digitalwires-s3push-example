@@ -1,7 +1,7 @@
 {
-  "name": "dpa-nitf-transform",
+  "name": "dpa-s3push-preprocess",
   "version": "1.0.0",
-  "description": "An example to integrate s3push via serverless into the customers AWS account via a lambda function for transformation.",
+  "description": "An example to integrate s3push via serverless into the customers AWS account via a lambda function for deduplication and transformation.",
   "author": "dpa-IT Services GmbH",
   "license": "Apache-2.0",
   "licenses": [
@@ -14,8 +14,8 @@
     "node": ">=12.22"
   },
   "scripts": {
-    "transform-deploy": "serverless deploy; serverless info -v",
-    "transform-remove": "serverless remove",
+    "s3push-preprocess-deploy": "serverless deploy; serverless info --verbose",
+    "s3push-preprocess-remove": "serverless remove",
     "test": "ava *.test.js",
     "test:watch": "ava --watch"
   },
@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "serverless": "^2.64.0"
+    "serverless": "^3.7.1"
   }
 }

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Copyright 2021, 2021 dpa-IT Services GmbH
+# Copyright 2022, 2022 dpa-IT Services GmbH
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -84,7 +84,7 @@ def receive_messages():
             ],
             MaxNumberOfMessages=1,
             MessageAttributeNames=['All'],
-            VisibilityTimeout=0,
+            VisibilityTimeout=5,
             WaitTimeSeconds=3
         )
 

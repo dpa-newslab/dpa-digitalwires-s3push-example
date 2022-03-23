@@ -1,0 +1,23 @@
+{
+  "name": "dpa-s3push-base-resources",
+  "version": "1.0.0",
+  "description": "An example to integrate s3push via serverless into the customers AWS account via a lambda function for deduplication and transformation.",
+  "author": "dpa-IT Services GmbH",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "engines": {
+    "node": ">=12.22"
+  },
+  "scripts": {
+    "s3push-base-resources-deploy": "serverless deploy; serverless info --verbose",
+    "s3push-base-resources-remove": "serverless remove"
+  },
+  "devDependencies": {
+    "serverless": "^3.7.1"
+  }
+}

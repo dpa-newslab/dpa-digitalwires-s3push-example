@@ -1,0 +1,197 @@
+# -*- coding: utf-8 -*-
+#
+# Copyright 2022, 2022 dpa-IT Services GmbH
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+service: ${self:custom.global_resource_prefix}-${self:custom.component_name}
+projectDir: ../
+
+custom:
+  component_name: dpa-s3push-preprocess  # CHANGE THIS!
+  global_resource_prefix: ${file(../base_resources/serverless.yml):custom.global_resource_prefix}
+  description: "Read incoming JSON articles, deduplicate and transform them into another format"
+
+  s3_bucket_name: ${file(../base_resources/serverless.yml):custom.s3_bucket_name}
+  s3_prefix_in: ${file(../base_resources/serverless.yml):custom.s3_prefix_in}
+  s3_prefix_out: transformed # CHANGE THIS!
+
+  sns_s3push_incoming_topic_name: ${file(../base_resources/serverless.yml):custom.sns_s3push_incoming_topic_name}
+  sns_s3push_transformed_topic_name: ${self:custom.global_resource_prefix}-dpa-s3push-transformed-sns.fifo  # CHANGE THIS!
+  sns_s3push_transformed_topic_arn: {"Fn::Join": ["", ["arn:aws:sns:", {"Ref": "AWS::Region"}, ":", {"Ref": "AWS::AccountId"}, ":${self:custom.sns_s3push_transformed_topic_name}"]]}
+  
+  sqs_incoming_name: ${self:custom.global_resource_prefix}-s3push-incoming-sqs
+  sqs_dlq_name: ${self:custom.global_resource_prefix}-s3push-dlq-sqs
+
+  table_name: ${self:custom.global_resource_prefix}-topicle-versions-${self:provider.stage}
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}  # CHANGE THIS!
+  region: eu-central-1
+  # TODO: create deployment bucket or comment the deploymentBucket with results in a default deployment bucket
+  # aws s3api create-bucket --bucket <deploymentBucketName> --region eu-central-1 --create-bucket-configuration LocationConstraint=eu-central-1
+  deploymentBucket: serverless-deployments-${self:provider.region}-${env:USER,"someUser"}
+  logRetentionInDays: 14
+
+  iamRoleStatements:
+
+    # attach function to bucket
+    -  Effect: "Allow"
+       Action: "s3:PutBucketNotification"
+       Resource: "arn:aws:s3:::${self:custom.s3_bucket_name}"
+
+    # read from bucket
+    - Effect: "Allow"
+      Action: "s3:GetObject*"
+      Resource: [ "arn:aws:s3:::${self:custom.s3_bucket_name}/${self:custom.s3_prefix_in}/*" ]
+
+    # write transformed to bucket
+    - Effect: "Allow"
+      Action: "s3:PutObject*"
+      Resource: [ "arn:aws:s3:::${self:custom.s3_bucket_name}/${self:custom.s3_prefix_out}/*" ]
+
+    - Effect: "Allow"
+      Action: ["dynamodb:PutItem", "dynamodb:Query"]
+      Resource: 
+        - !Join [":", ["arn:aws:dynamodb:${self:provider.region}", Ref: AWS::AccountId, "table/${self:custom.table_name}"]]
+
+    - Effect: "Allow"
+      Action: "sns:Publish"
+      Resource: ${self:custom.sns_s3push_transformed_topic_arn}
+
+resources:
+  Description: ${self:custom.description}
+  Resources:
+    S3PushIncomingQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        DelaySeconds: 0
+        MaximumMessageSize: 262144
+        MessageRetentionPeriod: 864000
+        QueueName: ${self:custom.sqs_incoming_name}
+        ReceiveMessageWaitTimeSeconds: 0
+        VisibilityTimeout: 60
+        RedrivePolicy:
+          deadLetterTargetArn: { "Fn::GetAtt": ["DeadLetterQueue", "Arn"]}
+          maxReceiveCount: 5
+
+    DeadLetterQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:custom.sqs_dlq_name}
+        MessageRetentionPeriod: 345600 # 4d
+
+    # topic for transformed dpa content (.xml)
+    S3PushTransformedTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: ${self:custom.sns_s3push_transformed_topic_name}
+        FifoTopic: true
+
+    S3PushTransformedTopicPolicy:
+      Type: AWS::SNS::TopicPolicy
+      Properties:
+        Topics:
+        - Ref: S3PushTransformedTopic
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+          - Sid: AllowS3PushBucketToPublishToQueue
+            Effect: Allow
+            Principal:
+              Service: s3.amazonaws.com
+            Action: sns:Publish
+            Resource:
+              Ref: S3PushTransformedTopic
+            Condition:
+              ArnLike:
+                "aws:SourceArn": "arn:aws:s3:*:*:${self:custom.s3_bucket_name}"
+
+    SnsToSqsIncomingSubscription:
+        Type: AWS::SNS::Subscription
+        Properties:
+            TopicArn: {"Fn::Join": ["", ["arn:aws:sns:", {"Ref": "AWS::Region"}, ":", {"Ref": "AWS::AccountId"}, ":${self:custom.sns_s3push_incoming_topic_name}"]]}
+            Endpoint:
+                Fn::GetAtt: [S3PushIncomingQueue, Arn]
+            Protocol: sqs
+            RawMessageDelivery: true
+
+    # Policy allows SNS to publish to this SQS queue
+    IncomingSnsToSqsPolicy:
+      Type: AWS::SQS::QueuePolicy
+      Properties:
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Sid: "Allow SNS publish to SQS"
+              Effect: Allow
+              Principal: 
+                Service: "sns.amazonaws.com"
+              Resource: {"Fn::Join": ["", ["arn:aws:sqs:", {"Ref": "AWS::Region"}, ":", {"Ref": "AWS::AccountId"}, ":${self:custom.sqs_incoming_name}"]]}
+              Action: SQS:SendMessage
+              Condition:
+                ArnEquals:
+                  aws:SourceArn: {"Fn::Join": ["", ["arn:aws:sns:", {"Ref": "AWS::Region"}, ":", {"Ref": "AWS::AccountId"}, ":${self:custom.sns_s3push_incoming_topic_name}"]]}
+        Queues:
+          - Ref: S3PushIncomingQueue
+
+    TopicleVersionTable:
+      Type: AWS::DynamoDB::Table
+      DeletionPolicy: Retain 
+      Properties:
+        TableName: ${self:custom.table_name}
+        BillingMode: PAY_PER_REQUEST
+        KeySchema:
+          - AttributeName: urn
+            KeyType: HASH 
+          - AttributeName: padded_version_string
+            KeyType: RANGE
+        AttributeDefinitions:
+          - AttributeName: urn 
+            AttributeType: S
+          - AttributeName: padded_version_string 
+            AttributeType: S
+        TimeToLiveSpecification:
+          AttributeName: ExpirationTime
+          Enabled: True
+
+functions:
+  preprocess:
+    description: "${self:custom.description}"
+    handler: handler.handle_queue
+    memorySize: 128
+    timeout: 30
+    events:
+      - sqs:
+          arn: {"Fn::GetAtt": ["S3PushIncomingQueue", "Arn"]}
+          batchSize: 1
+    environment:
+      S3_BUCKET_NAME: ${self:custom.s3_bucket_name}
+      S3_BUCKET_PREFIX_IN: ${self:custom.s3_prefix_in}
+      S3_BUCKET_PREFIX_OUT: ${self:custom.s3_prefix_out}
+      TABLE_NAME: ${self:custom.table_name}
+      TOPIC_ARN: ${self:custom.sns_s3push_transformed_topic_arn}
+      QUEUE_URL:
+        Ref: S3PushIncomingQueue
+
+package:
+  exclude:
+    - "*"
+    - "**/*"
+  include:
+    - "*.js"
+    - "node_modules/**"
+    - "!*.test.js"
+    - "!**/*~"
