@@ -2,16 +2,15 @@
 # S3-Push Example
 
 These are instructions on how to set up an S3 bucket in your own AWS account to
-receive articles via s3push.
+receive articles via s3push. New articles are sent to a SQS-queue using SNS-notifications.
 
 ## TL;DR
 
 ```
+# please ensure aws-credentials are set to admin-user of your aws-account
 npm install
 
-# please ensure aws-credentials are set to admin-user of your aws-account
-
-nano serverless.yml   # please change bucket name and prefix
+nano serverless.yml   # please look for "CHANGE THIS" to change bucket names and prefix
 
 npm run s3push-deploy
 
@@ -33,7 +32,7 @@ v12.22.7
 ### Serverless Framework
 
 Make sure that you have installed [serverless.com](https://www.serverless.com)
-on your system. The current project was tested with `v2.64.0`.
+on your system. The current project was tested with `v3.8.0`.
 
 ```
 npm install -g serverless
@@ -44,7 +43,7 @@ npm install -g serverless
 Configure your AWS credentials. You can find more information 
 [here](https://docs.aws.amazon.com/cli/latest/userguide/cli-config-files.html):
 
-If the file `~/.aws/credentials` exists, the required environment variable can
+If the file `~/.aws/credentials` exists, the required environment variable
 in the shell can reference it:
 
 ```
@@ -69,8 +68,8 @@ any slashes ("/") in the name and in the prefix.
 ```
 custom:
   # Please set bucket name and prefix
-  s3_s3push_bucket_name: dpa-s3push-incoming-mycompany-com  # CHANGE THIS! - The bucket must not exist yet!
-  s3_s3push_prefix:      prefix  # CHANGE THIS!
+  s3_bucket_name: ${self:custom.global_resource_prefix}-dpa-s3push-incoming-mycompany-com # CHANGE THIS!
+  s3_prefix_in: prefix # CHANGE THIS!
 ```
 
 2. Deploy to AWS with the helper script we created:
@@ -127,6 +126,6 @@ aws s3 rm s3://<s3_s3push_bucket_name>/<s3_s3push_prefix --recursive
 
 ## Next steps
 
-In the repository [dpa-digitalwires-s3push-transform](url) you will find another
-best practices in which we will show you how to transform the incoming JSON
-articles into a simple XML file using a lambda trigger.
+In the repository [extend example](https://github.com/dpa-newslab/dpa-digitalwires-s3push-example/tree/main/extended) you will find another
+best practice in which we will show you how to transform the incoming JSON
+articles into other formats using a lambda trigger, bring articles in the correct order and deduplicate them. 

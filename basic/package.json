@@ -14,10 +14,10 @@
     "node": ">=12.22"
   },
   "scripts": {
-    "s3push-deploy": "serverless deploy; serverless info -v",
+    "s3push-deploy": "serverless deploy; serverless info --verbose",
     "s3push-remove": "serverless remove"
   },
   "devDependencies": {
-    "serverless": "^2.64.0"
+    "serverless": "^3.8.0"
   }
 }
